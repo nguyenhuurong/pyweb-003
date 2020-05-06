@@ -1,0 +1,15 @@
+
+<table>
+    <tr>
+        <th width="200">Tên món hàng</th>
+        <th> Đơn giá </th>
+    </tr>
+
+{% for product in  productList %}
+<tr>
+    <td><P>{{ product["name"] }} </P></td>
+    <td><P>{{ product["price"] }} </P></td>
+</tr>
+{% endfor %}
+</table>
+
