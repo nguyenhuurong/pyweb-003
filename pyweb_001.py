@@ -83,7 +83,7 @@ def products():
         {"name": "Bò", "price" : 78},
         {"name": "eo", "price" : 89},
     )
-    return render_template("sp01.html", productList = lpro)
+    return render_template("products.html", productList = lpro)
 
 @app.route('/addProduct', methods=['GET', 'POST'])
 def addProduct():
