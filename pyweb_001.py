@@ -43,8 +43,9 @@ def  home():
 @app.route('/login', methods=['GET', 'POST'])
 def  login():
 
-    if session['logged_in_flag']:
-        return redirect(url_for('home'))
+    if session.get('logged_in_flag'):
+        if session['logged_in_flag']:
+            return redirect(url_for('home'))
 
     query_parameters = request.args
     vusername = query_parameters.get("username")
