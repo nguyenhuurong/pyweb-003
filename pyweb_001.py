@@ -20,13 +20,13 @@ from pymongo import MongoClient
 
 ### Tạo APP
 app = Flask(__name__)
-app.secret_key = "adtekdev"
+app.secret_key = "nguyenhuurong"
 
 ### LIÊN KẾT TỚI DB MONGO
-MONGO_URI = 'mongodb://db01:csdl001@ds039421.mlab.com:39421/heroku_phqfm0rw'
+MONGO_URI = 'mongodb://rong:rong123456@ds121222.mlab.com:21222/heroku_x24xm6q2'
 cluster = MongoClient(MONGO_URI)
 
-db =  cluster.heroku_phqfm0rw  # cluster["heroku_phqfm0rw"]
+db =  cluster.heroku_x24xm6q2  # cluster["heroku_phqfm0rw"]
 
 
 ### CODE Flask - Python Web
