@@ -16,13 +16,17 @@
 		<h1>ADD product</h1>
 		<form action="/addProduct" method="GET">
             <div class="form-group">
-                <label for="productName">product Name</label>
-                <input type="text" class="form-control" id="productName" name="productName" >
+                <label for="productId">Product Id</label>
+                <input type="text" class="form-control" id="productId" name="productId" >
             </div>
             <div class="form-group">
-                <label for="productPrice">product Price</label>
-                <input type="text" class="form-control" id="productPrice"  name="productPrice">
-            </div>
+                <label for="product">Product</label>
+                <input type="text" class="form-control" id="product"  name="product">
+          </div>
+			<div class="form-group">
+                <label for="productPrice">Price of each</label>
+                <input type="text" class="form-control" id="priceOfeach"  name="priceOfeach">
+          </div>
             <button type="submit" class="btn btn-primary">Add</button>
         </form>
 </body>
