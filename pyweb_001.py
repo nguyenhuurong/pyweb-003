@@ -23,7 +23,7 @@ app = Flask(__name__)
 app.secret_key = "nguyenhuurong"
 
 ### LIÊN KẾT TỚI DB MONGO
-MONGO_URI = 'mongodb://rong:rong123456@ds121222.mlab.com:21222/heroku_x24xm6q2'
+MONGO_URI = 'mongodb://rong:rong123456@ds121222.mlab.com:21222/heroku_x24xm6q2?retryWrites=false'
 cluster = MongoClient(MONGO_URI)
 
 db =  cluster.heroku_x24xm6q2  # cluster["heroku_phqfm0rw"]
@@ -77,21 +77,23 @@ def  profile():
 
 @app.route('/products', methods=['GET', 'POST'])
 def products():
-    lpro = (
-        {"name": "Nem", "price" : 333},
-        {"name": "Chả", "price" : 11},
-        {"name": "Giò", "price" : 56},
-        {"name": "Bò", "price" : 78},
-        {"name": "eo", "price" : 89},
-    )
+    collection = db.products 
+    lpro = collection.find()
     return render_template("products.html", productList = lpro)
+
+@app.route('/orders', methods=['GET', 'POST'])
+def orders():
+    collection = db.orders 
+    lorder = collection.find()
+    return render_template("orders.html", orderList = lorder)
 
 @app.route('/addProduct', methods=['GET', 'POST'])
 def addProduct():
-    if ("productName" in request.args  and "productPrice" in request.args):
-        pName = request.args.get("productName")
-        pPrice = request.args.get("productPrice")
-        newProduct = {"name" : pName, "price" : pPrice}
-        collection = db.products 
-        collection.insert_one(newProduct)
+    if ("productId" in request.args and "product" in request.args  and "priceOfeach" in request.args):
+        pId = request.args.get("productId")
+        pName = request.args.get("product")
+        pPrice = request.args.get("priceOfeach")
+        newProduct = {"productId" : pId,"product" : pName, "priceOfeach" : pPrice}
+        collectionP = db.products 
+        collectionP.insert_one(newProduct)
     return render_template("addProduct.html")
